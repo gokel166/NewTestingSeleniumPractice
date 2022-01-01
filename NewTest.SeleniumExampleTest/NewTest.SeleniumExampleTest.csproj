@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Configurations" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="NUnit3TestAdapter" Version="4.2.0" />
+      <PackageReference Include="Selenium.Support" Version="4.1.0" />
+      <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="97.0.4692.3600-beta" />
+      <PackageReference Include="Selenium.WebDriver.IEDriver" Version="4.0.0" />
+    </ItemGroup>
+
+</Project>
