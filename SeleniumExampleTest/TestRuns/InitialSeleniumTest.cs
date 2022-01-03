@@ -2,32 +2,32 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using SeleniumExampleTest.Utils;
 
 namespace SeleniumExampleTest.TestRuns;
 
 [TestFixture]
 public class InitialSeleniumTest
 {
-    private IWebDriver _driver;
-    
+    // Initialize the CustomWebDriver class
+    private CustomWebDriver CustomDriver;
+
     [SetUp]
     public void Initialize()
     {
-        _driver = new ChromeDriver();
+        CustomDriver = new CustomWebDriver(new ChromeDriver());
     }
     
     [Test]
-    public void TestMethod1()
+    public void TestOpenNewBrowser()
     {
-        _driver.Navigate().GoToUrl("https://youtube.com");
-        Console.WriteLine("TestMethod1");
-        Thread.Sleep(5000);
+        CustomDriver.CreateChromeDriver().Navigate().GoToUrl("https:www.google.com");
+        Thread.Sleep(2500);
     }
     
     [TearDown]
     public void CleanUp()
     {
-        _driver.Quit();
-        _driver.Dispose();
+        CustomDriver.CloseChromeDriver();
     }
 }
