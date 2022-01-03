@@ -10,24 +10,47 @@ namespace SeleniumExampleTest.TestRuns;
 public class InitialSeleniumTest
 {
     // Initialize the CustomWebDriver class
-    private CustomWebDriverFactoryFactory _customDriverFactoryFactory;
+    private CustomWebDriverFactory _customDriverFactory;
 
     [SetUp]
     public void Initialize()
     {
-        _customDriverFactoryFactory = new CustomWebDriverFactoryFactory();
+        _customDriverFactory = new CustomWebDriverFactory();
     }
-    
+
     [Test]
-    public void TestOpenNewBrowser()
+    public void TestOpenChromeBrowser()
     {
-        _customDriverFactoryFactory.CreateFirefoxDriver().Navigate().GoToUrl("http://www.google.com");
+        this.OpenChromeBrowser();
+        Thread.Sleep(2500);
+    }
+
+    [Test]
+    public void GoToYoutubeHomePage()
+    {
+        // _customDriverFactory.GetDriver().FindElement()
+    }
+
+    [Test]
+    public void TestOpenFirefoxBrowser()
+    {
+        this.OpenFirefoxBrowser();
         Thread.Sleep(2500);
     }
     
     [TearDown]
     public void CleanUp()
     {
-        _customDriverFactoryFactory.CloseChromeDriver();
+        _customDriverFactory.CloseWebDriver();
+    }
+
+    private void OpenChromeBrowser()
+    {
+        _customDriverFactory.CreateChromeDriver().Navigate().GoToUrl("http://www.google.com");
+    }
+    
+    private void OpenFirefoxBrowser()
+    {
+        _customDriverFactory.CreateFirefoxDriver().Navigate().GoToUrl("http://www.google.com");
     }
 }
