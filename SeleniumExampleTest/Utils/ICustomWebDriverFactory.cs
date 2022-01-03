@@ -2,7 +2,7 @@ using OpenQA.Selenium;
 
 namespace SeleniumExampleTest.Utils;
 
-public interface ICustomWebDriver
+public interface ICustomWebDriverFactory
 {
     IWebDriver CreateChromeDriver();
 }

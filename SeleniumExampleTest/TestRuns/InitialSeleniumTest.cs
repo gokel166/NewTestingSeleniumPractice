@@ -10,24 +10,24 @@ namespace SeleniumExampleTest.TestRuns;
 public class InitialSeleniumTest
 {
     // Initialize the CustomWebDriver class
-    private CustomWebDriver CustomDriver;
+    private CustomWebDriverFactoryFactory _customDriverFactoryFactory;
 
     [SetUp]
     public void Initialize()
     {
-        CustomDriver = new CustomWebDriver(new ChromeDriver());
+        _customDriverFactoryFactory = new CustomWebDriverFactoryFactory();
     }
     
     [Test]
     public void TestOpenNewBrowser()
     {
-        CustomDriver.CreateChromeDriver().Navigate().GoToUrl("https:www.google.com");
+        _customDriverFactoryFactory.CreateFirefoxDriver().Navigate().GoToUrl("http://www.google.com");
         Thread.Sleep(2500);
     }
     
     [TearDown]
     public void CleanUp()
     {
-        CustomDriver.CloseChromeDriver();
+        _customDriverFactoryFactory.CloseChromeDriver();
     }
 }
